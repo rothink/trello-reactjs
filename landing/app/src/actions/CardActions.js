@@ -13,6 +13,14 @@ const createCard = (value) => {
     }
 }
 
+const editCard = (edited) => {
+    return {
+        type: ActionTypes.EDIT_CARD,
+        payload: edited
+    }
+}
+
 export default {
-    createCard
+    createCard,
+    editCard
 }
