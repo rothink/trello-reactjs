@@ -1,16 +1,23 @@
-import React, { Component} from 'react'
+import React, { Component } from 'react'
+import Panel from './../components/Panel'
+import Card from './../components/Card'
+import './Home.scss';
 
 class Home extends Component {
 
     constructor(props) {
-        super (props)
+        super(props)
     }
 
     render() {
         return (
-            <h1>Kanban Board React.js</h1>
+            <div>
+                <Panel>
+
+                </Panel>
+            </div>
         )
-    }   
+    }
 }
 
 export default Home
