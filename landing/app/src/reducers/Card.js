@@ -19,6 +19,11 @@ export default function cards(state = [], action) {
                 return card
             });
 		break;
+		case ActionTypes.REMOVE_CARD:
+		const {id} = action.payload
+		console.info(id,' ID');
+		return state.filter(card => id !== card.id)
+	break;
 		default:
 			return state
 		

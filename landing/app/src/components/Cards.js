@@ -8,6 +8,7 @@ class Cards extends Component {
         super(props)
     }
 
+    
     render() {
         const cards = this.props.cards.map(card => (
             <Card
@@ -17,7 +18,11 @@ class Cards extends Component {
                     edit = {card.edit}
                     text = {card.text}
                     clickToEdit = {this.props.clickToEdit}
+                    editCard = {this.props.editCard}
+                    removeCard = {this.props.removeCard}
+
                 />
+                
             </Card>
         ))
         return (

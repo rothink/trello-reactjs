@@ -5,7 +5,8 @@ class InputEditable extends Component {
         super(props)
 
         this.handleClickToEdit = this.handleClickToEdit.bind(this)
-
+        this.handleEditCard = this.handleEditCard.bind(this)
+        this.handleRemoveCard = this.handleRemoveCard.bind(this)
     }
 
     handleClickToEdit() {
@@ -19,22 +20,45 @@ class InputEditable extends Component {
                 <input type="text" 
                     className="form-control" 
                     defaultValue = {this.props.text}
-
+                    onBlur = {this.handleEditCard}
+                    onKeyPress = {this.handleEditCard}
                 />
             </div>
         )
     }
 
+    handleRemoveCard(e) {
+        const {id} = this.props
+        this.props.removeCard(id)
+    }
+
+    handleEditCard(e) {
+
+        if(e.type === 'keypress' && e.key !== 'Enter') {
+            return;
+        }
+
+        const text = e.target.value
+        const {id} = this.props
+
+        if(text.trim().length) {
+            this.props.editCard(id, text)
+        }
+    }
+
     renderText() {
         return (
             <div>
-                <div className="col-xs-10">
+                <div className="col-xs-10 col-md-10">
                     <input type="text" 
                         className="form-control" 
                         defaultValue = {this.props.text}
                         onClick={this.handleClickToEdit}
                         readOnly
                     />
+                </div>
+                <div className="col-xs-2 col-md-2">
+                    <i className="ion-trash-b" onClick = {this.handleRemoveCard}></i>
                 </div>
             </div>
         )
