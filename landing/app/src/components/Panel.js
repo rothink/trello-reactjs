@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Cards from './Cards'
 import { connect } from 'react-redux'
 import CardActions from './../actions/CardActions'
+import InputEditable from './InputEditable';
 
 class Panel extends Component {
 	static propTypes = {
@@ -20,12 +21,18 @@ class Panel extends Component {
 	}
 
 	render() {
-		const { cards } = this.props 
+		const { cards, panel } = this.props 
+		
 		return (
 			<div className="col-md-3">
 				<div className="panel panel-default">
 					<div className="panel-heading">
-						<h2>MY PANEL</h2>
+						<InputEditable 
+							id={ panel.id }
+							edit={ panel.edit }
+							text={ panel.text }
+							editPanel = {this.props.editPanel}
+						/>
 					</div>
 					<div className="panel-body">
 						<Cards 
