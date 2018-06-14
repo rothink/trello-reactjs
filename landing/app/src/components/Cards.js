@@ -19,10 +19,8 @@ class Cards extends Component {
                     text = {card.text}
                     clickToEdit = {this.props.clickToEdit}
                     editComponent = {this.props.editCard}
-                    removeCard = {this.props.removeCard}
-
+                    removeComponent = {this.props.removeCard}
                 />
-                
             </Card>
         ))
         return (

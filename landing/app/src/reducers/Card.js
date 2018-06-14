@@ -10,7 +10,6 @@ export default function cards(state = [], action) {
 			]
         break;
         case ActionTypes.EDIT_CARD:
-
             return state.map(card => {
                 const {id} = action.payload
                 if(id === card.id) {
@@ -21,7 +20,6 @@ export default function cards(state = [], action) {
 		break;
 		case ActionTypes.REMOVE_CARD:
 		const {id} = action.payload
-		console.info(id,' ID');
 		return state.filter(card => id !== card.id)
 	break;
 		default:

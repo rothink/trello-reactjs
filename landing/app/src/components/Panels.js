@@ -15,6 +15,8 @@ class Panels extends Component {
                 key= {panel.id}
                 panel= {panel}
                 editPanel=  {this.props.editPanel}
+                removePanel = {this.props.removePanel}
+                movePanel = {this.props.movePanel}
             />
         ))
         return (
