@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Cards from './Cards'
 import { connect } from 'react-redux'
 import CardActions from './../actions/CardActions'
+import InputEditable from './InputEditable';
 
 class Panel extends Component {
 	static propTypes = {
@@ -20,18 +21,25 @@ class Panel extends Component {
 	}
 
 	render() {
-		const { cards } = this.props 
+		const { cards, panel } = this.props 
+		
 		return (
 			<div className="col-md-3">
 				<div className="panel panel-default">
 					<div className="panel-heading">
-						<h2>MY PANEL</h2>
+						<InputEditable 
+							id={ panel.id }
+							edit={ panel.edit }
+							text={ panel.text }
+							editPanel = {this.props.editPanel}
+						/>
 					</div>
 					<div className="panel-body">
 						<Cards 
 							cards={ cards }
 							clickToEdit={ this.props.editCard }
-							
+							editCard ={ this.props.editCard }
+							removeCard = {this.props.removeCard}
 						/>
 					</div>
 					<div className="panel-footer">
@@ -54,10 +62,21 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
         createCard: () => dispatch(CardActions.createCard('New Task')),
-        editCard: (id) => {
-            const edited = {id, edit: true}
+        editCard: (id, value) => {
+			const edited = {id, edit: true}
+			
+			if(!value) {
+				edited.edit = true
+			} else {
+				edited.edit = false
+				edited.text = value
+			}
+
             dispatch(CardActions.editCard(edited))
-        }
+		},
+		removeCard: (id) =>  {
+			dispatch(CardActions.removeCard(id))
+		}  
 	}
 }
 

@@ -20,7 +20,17 @@ const editCard = (edited) => {
     }
 }
 
+const removeCard = (id) => {
+    return {
+        type: ActionTypes.REMOVE_CARD,
+        payload: {
+            id: id
+        } 
+    }
+}
+
 export default {
     createCard,
-    editCard
+    editCard,
+    removeCard
 }
